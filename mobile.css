@@ -1,0 +1,424 @@
+/* =============================================
+   SMARTTOUR — MOBILE RESPONSIVE STYLESHEET
+   Applies to all breakpoints under 1024px
+   ============================================= */
+
+/* ─── Fix: disable scroll animations on mobile ─────────────── */
+/* Animations leave elements in opacity:0/transform states until  */
+/* IntersectionObserver fires. On mobile this causes the browser  */
+/* to miscalculate scroll boundaries → "stuck" scroll on hero.    */
+/* After scrolling to bottom (all IO callbacks fired) it vanishes  */
+/* — confirming animations are the culprit. Fix: show all         */
+/* elements immediately on mobile, skip reveal animations.         */
+@media (max-width: 768px) {
+
+    .fade-in-up,
+    .slide-in-left,
+    .slide-in-right,
+    .zoom-in,
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* ─── Medium screens (≤ 1024px) ─── */
+@media (max-width: 1024px) {
+    .overview-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px;
+    }
+
+    .pricing-container {
+        flex-direction: column;
+    }
+
+    .inclusions-card {
+        width: 100%;
+    }
+}
+
+/* ─── Tablet and below (≤ 900px) ─── */
+@media (max-width: 900px) {
+    .cal-wrapper {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ─── Mobile (≤ 768px) ─── */
+@media (max-width: 768px) {
+
+    /* === Global === */
+    .section {
+        padding: 50px 0;
+    }
+
+    .section-title {
+        font-size: 1.7rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        display: block;
+        /* prevents inline-block overflow */
+        max-width: 100%;
+    }
+
+    /* Fix left-aligned title underline */
+    .section-title::after {
+        left: 0 !important;
+        transform: none !important;
+    }
+
+    .text-center .section-title::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .section-header p {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    /* === Navbar === */
+    .nav-links,
+    .btn-nav {
+        display: none;
+    }
+
+    .navbar.menu-open {
+        background: var(--white);
+    }
+
+    .navbar.menu-open .logo {
+        color: var(--secondary);
+    }
+
+    .navbar.menu-open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        gap: 0;
+        z-index: 999;
+    }
+
+    .navbar.menu-open .nav-links a {
+        color: var(--secondary);
+        padding: 14px 0;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar.menu-open .btn-nav {
+        display: flex;
+        margin: 12px 20px 20px;
+        width: calc(100% - 40px);
+        justify-content: center;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .navbar.menu-open .mobile-menu-toggle span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background: var(--secondary);
+    }
+
+    .navbar.menu-open .mobile-menu-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar.menu-open .mobile-menu-toggle span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background: var(--secondary);
+    }
+
+    /* === Hero Slider === */
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.25;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary {
+        width: 90%;
+        max-width: 300px;
+        font-size: 1rem;
+        padding: 12px 24px;
+    }
+
+    /* === Overview Section === */
+    .overview-grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px;
+    }
+
+    .overview-text .subtitle {
+        font-size: 1rem;
+    }
+
+    /* Feature list — keep icon + all text in one natural flow */
+    .feature-list {
+        margin-top: 16px;
+    }
+
+    .feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.9rem;
+        margin-bottom: 14px;
+        line-height: 1.6;
+        flex-wrap: nowrap;
+    }
+
+    .feature-list li>*:not(.icon) {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .feature-list li strong {
+        display: inline;
+        margin-right: 4px;
+    }
+
+    .feature-list .icon {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        flex-shrink: 0;
+        font-size: 0.8rem;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    .img-main {
+        height: auto !important;
+        max-height: 75vh;
+        width: 100% !important;
+        object-fit: contain !important;
+    }
+
+    /* === Cards Grid === */
+    .grid-cards {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+    }
+
+    .card img {
+        height: 200px;
+    }
+
+    .card-content {
+        padding: 16px;
+    }
+
+    .card-content h3 {
+        font-size: 1.1rem;
+    }
+
+    /* === Package page photo === */
+    .overview-images img.img-main {
+        height: auto !important;
+        max-height: 75vh;
+        border-radius: 14px !important;
+    }
+
+    /* === Timeline === */
+    .timeline::before {
+        left: 8px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        padding-left: 32px;
+        margin-bottom: 24px;
+        position: relative;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--white);
+        border: 3px solid var(--primary);
+        z-index: 2;
+    }
+
+    .timeline-item .time {
+        width: auto;
+        text-align: left;
+        padding-right: 0;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 6px;
+    }
+
+    .timeline-item .time::after {
+        display: none;
+    }
+
+    .timeline-item .content {
+        margin-left: 0;
+        padding: 16px;
+    }
+
+    .timeline-item .content h4 {
+        font-size: 1rem;
+    }
+
+    /* === Pricing === */
+    .pricing-container {
+        flex-direction: column !important;
+        gap: 20px;
+    }
+
+    .pricing-card,
+    .inclusions-card {
+        width: 100% !important;
+    }
+
+    .amount {
+        font-size: 2rem !important;
+    }
+
+    /* === Calendar === */
+    .cal-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .cal-legend-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 0.85rem;
+        justify-content: center;
+    }
+
+    .cal-grid {
+        padding: 6px;
+        gap: 2px;
+    }
+
+    .cal-cell {
+        min-height: 34px;
+        font-size: 0.75rem;
+        border-radius: 6px;
+    }
+
+    .cal-num {
+        font-size: 0.8rem;
+    }
+
+    .cal-tag {
+        font-size: 0.42rem;
+        letter-spacing: 0;
+    }
+
+    .cal-month-header {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+
+    .cal-day-name {
+        font-size: 0.65rem;
+        padding: 5px 0;
+    }
+
+    /* === Schedule CTA === */
+    .sched-note {
+        font-size: 0.8rem;
+        padding: 0 8px;
+        text-align: center;
+    }
+
+    /* === Footer === */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .cta-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .footer-bottom p {
+        font-size: 0.82rem;
+        text-align: center;
+    }
+
+    /* === Overview mini slider === */
+    .overview-slider {
+        aspect-ratio: 4/3 !important;
+        border-radius: 14px !important;
+    }
+}
+
+/* ─── Small mobile (≤ 480px) ─── */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 11px 20px;
+        font-size: 0.9rem;
+    }
+
+    .pricing-card {
+        padding: 20px 14px;
+    }
+
+    .inc-box {
+        padding: 16px;
+    }
+
+    .cal-cell {
+        min-height: 28px;
+    }
+
+    .cal-num {
+        font-size: 0.72rem;
+    }
+
+    .feature-list li {
+        font-size: 0.85rem;
+    }
+}

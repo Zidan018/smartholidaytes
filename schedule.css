@@ -1,0 +1,194 @@
+/* ========================
+   CALENDAR SCHEDULE STYLES
+   ======================== */
+
+.sched-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+/* Legend Bar */
+.cal-legend-bar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.cal-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.cal-dot--avail {
+    background: #22c55e;
+}
+
+.cal-dot--full {
+    background: #ef4444;
+}
+
+.cal-dot--normal {
+    background: #cbd5e1;
+    border: 2px solid #e2e8f0;
+}
+
+.cal-legend-avail {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+.cal-legend-full {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+/* Calendar Wrapper */
+.cal-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    justify-content: center;
+}
+
+/* Single Month Block */
+.cal-month {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    width: 100%;
+}
+
+.cal-month-header {
+    background: linear-gradient(135deg, var(--secondary) 0%, #2c3e50 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 18px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Calendar Grid: 7 columns */
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    padding: 12px;
+    background: #f1f5f9;
+}
+
+/* Day labels row */
+.cal-day-name {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-light);
+    padding: 8px 0;
+    letter-spacing: 0.5px;
+}
+
+/* Individual day cells */
+.cal-cell {
+    background: var(--white);
+    border-radius: 8px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+    min-height: 42px;
+    text-decoration: none;
+    position: relative;
+}
+
+.cal-cell--empty {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Available date */
+.cal-cell--avail {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(34, 197, 94, 0.35);
+}
+
+.cal-cell--avail:hover {
+    transform: scale(1.12);
+    box-shadow: 0 6px 18px rgba(34, 197, 94, 0.5);
+    z-index: 2;
+}
+
+/* Fully booked date */
+.cal-cell--full {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    font-weight: 700;
+    cursor: not-allowed;
+    box-shadow: 0 3px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* Number and tag inside cells */
+.cal-num {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.cal-tag {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+    opacity: 0.9;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .cal-wrapper {
+        gap: 16px;
+    }
+
+    .cal-month {
+        min-width: 100%;
+    }
+
+    .cal-grid {
+        padding: 8px;
+        gap: 1px;
+    }
+
+    .cal-cell {
+        min-height: 38px;
+        font-size: 0.8rem;
+    }
+
+    .cal-num {
+        font-size: 0.9rem;
+    }
+
+    .cal-tag {
+        font-size: 0.5rem;
+    }
+
+    .cal-legend-bar {
+        gap: 16px;
+        font-size: 0.85rem;
+    }
+}
